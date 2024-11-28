@@ -22,11 +22,11 @@ def get_open_ai_resp(previous_conv,userInput):
     client = OpenAI(api_key=api_key)
     # conversation_to_string(previous_conv)
     prompt = "The previous conversation is: ["+ conversation_to_string(previous_conv) +"]. Answer the following: " + str(userInput)
-    print("get_open_ai_prompt: ",prompt)
+    # print("get_open_ai_prompt: ",prompt)
     completion = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-           {"role": "system", "content": "You are a chatbot on Math Assistant website"},
+           {"role": "system", "content": "You are a chatbot on Math Assistant website, only assist with math problems and politely decline to assist on things not related to Math"},
         {"role": "user", "content": prompt}
     ]
     )
